@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_health_status"
+            android:visible="false"
+            android:title="@string/health_status" />
+        <item
+            android:id="@+id/nav_prevention"
+            android:title="@string/preventions" />
+        <item
+            android:id="@+id/nav_symptoms"
+            android:title="@string/symptoms" />
+        <item
+            android:id="@+id/nav_questions"
+            android:title="@string/popular_questions" />
+    </group>
+
+    <group>
+
+        <item android:title="@string/settings">
+
+            <menu>
+                <item
+                    android:id="@+id/nav_notifications"
+                    android:title="@string/notifications"
+                    android:visible="false"
+                    app:actionViewClass="androidx.appcompat.widget.SwitchCompat" />
+
+                <item
+                    android:id="@+id/nav_dark_mode"
+                    android:title="@string/dark_mode"
+                    app:actionViewClass="androidx.appcompat.widget.SwitchCompat" />
+
+            </menu>
+
+        </item>
+
+    </group>
+</menu>

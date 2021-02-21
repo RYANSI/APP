@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/title"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/latest_updates"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:drawableEndCompat="@drawable/ic_baseline_expand_more_24"
+            app:layout_constraintBaseline_toBaselineOf="@+id/title"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="05, April 2020" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,125 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'com.google.gms.google-services'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.firebase.appdistribution'
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.hari.covid_19app"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('src\\debug\\debug.keystore')
+            keyAlias 'androiddebugkey'
+            storePassword 'android'
+            keyPassword 'android'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug{
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            firebaseAppDistribution {
+                serviceCredentialsFile="app/src/debug/covid-19-tracker-4bb81-f9d04f4d9492.json"
+                releaseNotesFile="app/src/debug/release-notes.txt"
+                groups="internal"
+            }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    dataBinding {
+        enabled = true
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs += [
+                "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi",
+                "-Xuse-experimental=kotlinx.coroutines.ObsoleteCoroutinesApi"]
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    implementation deps.support.app_compat
+    implementation deps.support.core_ktx
+    implementation deps.support.design
+    implementation deps.constraint_layout
+
+    implementation deps.lifecycle.livedata_ktx
+    implementation deps.lifecycle.viewmodel_ktx
+
+    implementation deps.navigation.fragment_ktx
+    implementation deps.navigation.ui_ktx
+
+    implementation deps.groupie.main
+    implementation deps.groupie.viewbinding
+
+
+    implementation deps.firebase.firebase_database_ktx
+
+    //room database
+    kapt deps.room.compiler
+    implementation deps.room.runtime
+    implementation deps.room.ktx
+
+    //retrofit
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+    implementation deps.okhttp.okhttp_logging_interceptor
+    implementation deps.okhttp.okhttp
+
+    //dagger
+    implementation deps.dagger.assistedInjectAnnotations
+    kapt deps.dagger.assistedInjectProcessor
+
+    //hilt
+    kapt deps.hilt.compiler
+    implementation deps.hilt.android
+    kapt deps.hilt.androidCompiler
+    implementation deps.hilt.viewmodel
+    implementation deps.hilt.work
+
+    //work manager
+    implementation deps.work.runtime_ktx
+
+    //coil
+    implementation deps.coil.core
+    implementation deps.coil.svg
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'androidx.preference:preference-ktx:1.1.1'
+}
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="state"
+            type="com.hari.covid_19app.db.entity.State" />
+    </data>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp">
+
+        <TextView
+            news="@{state}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/item_margin"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:drawableEndCompat="@drawable/ic_arrow_right"
+            tools:text="1,513 new cases and 46 new deaths in Canada" />
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
